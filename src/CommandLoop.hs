@@ -139,7 +139,6 @@ configSession state clientSend config = do
                       Nothing ->
                           return $ Right []
                       Just cabalConfig -> do
-                          liftIO $ setCurrentDirectory . takeDirectory $ cabalConfigPath cabalConfig
                           liftIO $ getPackageGhcOpts (cabalConfigPath cabalConfig) (configStack config)
     case eCabalGhcOpts of
       Left e -> return $ Left e
